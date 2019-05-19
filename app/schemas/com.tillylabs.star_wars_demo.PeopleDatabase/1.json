@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ddf675d8d58fa8f9a4f50dfeba4581a1",
+    "identityHash": "2e61103484894379d09f48fbf35242dd",
     "entities": [
       {
         "tableName": "people",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`birth_year` TEXT NOT NULL, `eye_color` TEXT NOT NULL, `films` TEXT NOT NULL, `gender` TEXT NOT NULL, `hair_color` TEXT NOT NULL, `height` INTEGER NOT NULL, `homeworld` TEXT NOT NULL, `mass` INTEGER NOT NULL, `name` TEXT NOT NULL, `skin_color` TEXT NOT NULL, `created` TEXT NOT NULL, `edited` TEXT NOT NULL, `species` TEXT NOT NULL, `starships` TEXT NOT NULL, `url` TEXT NOT NULL, `vehicles` TEXT NOT NULL, PRIMARY KEY(`name`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`birth_year` TEXT NOT NULL, `eye_color` TEXT NOT NULL, `films` TEXT NOT NULL, `gender` TEXT NOT NULL, `hair_color` TEXT NOT NULL, `height` TEXT NOT NULL, `homeworld` TEXT NOT NULL, `mass` TEXT NOT NULL, `name` TEXT NOT NULL, `skin_color` TEXT NOT NULL, `created` TEXT NOT NULL, `edited` TEXT NOT NULL, `species` TEXT NOT NULL, `starships` TEXT NOT NULL, `url` TEXT NOT NULL, `vehicles` TEXT NOT NULL, PRIMARY KEY(`name`))",
         "fields": [
           {
             "fieldPath": "birth_year",
@@ -41,7 +41,7 @@
           {
             "fieldPath": "height",
             "columnName": "height",
-            "affinity": "INTEGER",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -53,7 +53,7 @@
           {
             "fieldPath": "mass",
             "columnName": "mass",
-            "affinity": "INTEGER",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -117,7 +117,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ddf675d8d58fa8f9a4f50dfeba4581a1\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"2e61103484894379d09f48fbf35242dd\")"
     ]
   }
 }

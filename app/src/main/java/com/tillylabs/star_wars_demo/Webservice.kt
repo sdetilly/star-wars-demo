@@ -28,7 +28,15 @@ object Webservice {
     @JvmStatic
     @Throws(IOException::class)
     fun getPeopleList(): List<Person>{
-        val response = api.fetchPeopleList().execute()
-        return response.body()?.results ?: throw IOException(response.errorBody()?.string() ?: "")
+        var i = 1
+        var response = api.fetchPeopleList(i).execute()
+        val list = response.body()?.results ?: throw IOException(response.errorBody()?.string() ?: "")
+        while(!response.body()?.next.isNullOrEmpty()){
+            i++
+            response = api.fetchPeopleList(i).execute()
+            val tempList = response.body()?.results ?: throw IOException(response.errorBody()?.string() ?: "")
+            list.addAll(tempList)
+        }
+        return list
     }
 }
