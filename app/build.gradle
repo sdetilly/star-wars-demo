@@ -51,6 +51,11 @@ android {
             }
         }
 
+        packagingOptions {
+            exclude 'META-INF/*'
+            exclude 'LICENSE.txt'
+        }
+
         androidExtensions {
             experimental = true
         }
@@ -61,6 +66,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    dataBinding {
+        enabled = true
     }
 }
 

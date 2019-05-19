@@ -1,5 +1,11 @@
 package com.tillylabs.star_wars_demo.models
 
+import androidx.room.Entity
+import androidx.room.TypeConverters
+import com.tillylabs.star_wars_demo.StringArrayRoomConverter
+
+@Entity(tableName = "people",
+    primaryKeys = ["name"])
 data class Person(val birth_year: String = "",
                   val eye_color: String = "",
                   val films: ArrayList<String> = ArrayList(),
@@ -20,7 +26,8 @@ data class Person(val birth_year: String = "",
 data class PersonListResponse(val count: Int = 1,
                               val next: String = "",
                               val previous: String? = "",
-                              val results: ArrayList<Person> = ArrayList())
+                              val results: ArrayList<Person> = ArrayList()
+)
 
 /*
 {
