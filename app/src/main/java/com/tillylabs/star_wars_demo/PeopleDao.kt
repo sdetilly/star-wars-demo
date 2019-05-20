@@ -13,6 +13,9 @@ interface PeopleDao {
     @Query("SELECT * FROM people")
     fun loadList(): LiveData<List<Person>>
 
+    @Query("SELECT * FROM people WHERE name = :name")
+    fun getPerson(name: String): LiveData<Person>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOrUpdate(people: List<Person>)
 }

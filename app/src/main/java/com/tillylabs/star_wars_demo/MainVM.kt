@@ -16,12 +16,13 @@ class MainVM: ViewModel(), SearchView.OnQueryTextListener {
     val fullNameSet = mutableSetOf<Person>()
 
 
-    fun init(activity: AppCompatActivity){
+    fun init(activity: AppCompatActivity, listener: NameAdapter.ItemClickListener){
         val repo = Repo(PeopleDatabase.getInstance(activity.applicationContext))
         repo.getPeopleData().observe(activity, Observer{ list ->
             if(list != null){
                 fullNameSet.addAll(list)
                 val adapter = uiAdapter.get()
+                adapter?.listener = listener
                 adapter?.submitList(list)
                 uiAdapter.set(adapter)
             }

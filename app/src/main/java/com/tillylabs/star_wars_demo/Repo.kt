@@ -19,6 +19,10 @@ class Repo(val db: PeopleDatabase) {
         return peopleData!!
     }
 
+    fun getPersonData(name: String): LiveData<Person> {
+        return db.peopleDao().getPerson(name)
+    }
+
     private fun fetchPeople(){
         CoroutineScope(Dispatchers.IO).launch {
             withContext(Dispatchers.Default) {

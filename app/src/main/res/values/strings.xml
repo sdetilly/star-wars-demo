@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Star-wars-demo</string>
+    <string name="person_name">Name: %1$s</string>
+    <string name="person_gender">Gender: %1$s</string>
+    <string name="person_height">Height: %1$s</string>
+    <string name="person_birth">Birthyear: %1$s</string>
+    <string name="person_hair">Hair color: %1$s</string>
+    <string name="person_mass">Mass: %1$s</string>
+    <string name="person_skin">Skin color: %1$s</string>
+    <string name="person_eye">Eye color: %1$s</string>
+
+
+    <string name="trans_name">Person name</string>
+
 </resources>
