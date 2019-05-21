@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.tillylabs.star_wars_demo.NameAdapter.PersonViewHolder.Companion.DIFF
-import com.tillylabs.star_wars_demo.models.Person
+import com.tillylabs.star_wars_demo.people.RowPersonVM
+import com.tillylabs.star_wars_demo.people.Person
 import com.tillylabs.star_wars_demo.databinding.*
 
 class NameAdapter : ListAdapter<Person, NameAdapter.PersonViewHolder>(DIFF) {

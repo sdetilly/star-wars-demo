@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import com.tillylabs.star_wars_demo.people.PersonDetailsActivity
 import com.tillylabs.star_wars_demo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), NameAdapter.ItemClickListener {

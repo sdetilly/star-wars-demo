@@ -1,13 +1,13 @@
-package com.tillylabs.star_wars_demo
+package com.tillylabs.star_wars_demo.people
 
 import androidx.lifecycle.LiveData
-import com.tillylabs.star_wars_demo.models.Person
+import com.tillylabs.star_wars_demo.network.Webservice
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class Repo(val db: PeopleDatabase) {
+class PeopleRepo(val db: PeopleDatabase) {
 
     private var peopleData: LiveData<List<Person>>? = null
 

@@ -8,8 +8,24 @@
     <string name="person_mass">Mass: %1$s</string>
     <string name="person_skin">Skin color: %1$s</string>
     <string name="person_eye">Eye color: %1$s</string>
+    <string name="person_vehicle">Vehicle:</string>
+    <string name="person_no_vehicle">No vehicles</string>
+
+
+
+
+    <string name="vehicle_name">Name: %1$s</string>
+    <string name="vehicle_cargo">Cargo capacity: %1$s</string>
+    <string name="vehicle_cost">Cost: %1$s</string>
+    <string name="vehicle_crew">Crew: %1$s</string>
+    <string name="vehicle_length">Length color: %1$s</string>
+    <string name="vehicle_class">Class: %1$s</string>
+    <string name="vehicle_manufacturer">Manufacturer: %1$s</string>
+    <string name="vehicle_model">Model: %1$s</string>
 
 
     <string name="trans_name">Person name</string>
+    <string name="trans_vehicle_name">Vehicle name</string>
+
 
 </resources>

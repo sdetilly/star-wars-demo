@@ -1,12 +1,17 @@
-package com.tillylabs.star_wars_demo
+package com.tillylabs.star_wars_demo.people
 
 import android.app.Application
+import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
-import com.tillylabs.star_wars_demo.models.Person
+import com.tillylabs.star_wars_demo.R
+import com.tillylabs.star_wars_demo.vehicles.Vehicle
 
 class PersonDetailsVM(val app: Application): AndroidViewModel(app) {
 
     lateinit var person: Person
+
+    val vehicle = ObservableField<String>()
+    val vehicleList = ObservableField<List<Vehicle>>()
 
     fun init(person: Person){
         this.person = person

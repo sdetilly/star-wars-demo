@@ -1,4 +1,4 @@
-package com.tillylabs.star_wars_demo.models
+package com.tillylabs.star_wars_demo.people
 
 import androidx.room.Entity
 
@@ -20,13 +20,6 @@ data class Person(val birth_year: String = "",
                   val starships: ArrayList<String> = ArrayList(),
                   val url: String = "",
                   val vehicles: ArrayList<String> = ArrayList())
-
-data class PersonListResponse(val count: Int = 1,
-                              val next: String = "",
-                              val previous: String? = "",
-                              val results: ArrayList<Person> = ArrayList()
-)
-
 /*
 {
     "birth_year": "19 BBY",

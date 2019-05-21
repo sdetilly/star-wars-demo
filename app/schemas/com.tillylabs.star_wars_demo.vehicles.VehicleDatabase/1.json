@@ -1,0 +1,123 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "22ecd2d64c146111aa917d1bdd8eb43f",
+    "entities": [
+      {
+        "tableName": "vehicle",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`cargo_capacity` TEXT NOT NULL, `consumables` TEXT NOT NULL, `cost_in_credits` TEXT NOT NULL, `created` TEXT NOT NULL, `crew` TEXT NOT NULL, `edited` TEXT NOT NULL, `length` TEXT NOT NULL, `manufacturer` TEXT NOT NULL, `max_atmosphering_speed` TEXT NOT NULL, `model` TEXT NOT NULL, `name` TEXT NOT NULL, `passengers` TEXT NOT NULL, `pilots` TEXT NOT NULL, `films` TEXT NOT NULL, `url` TEXT NOT NULL, `vehicle_class` TEXT NOT NULL, PRIMARY KEY(`name`))",
+        "fields": [
+          {
+            "fieldPath": "cargo_capacity",
+            "columnName": "cargo_capacity",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "consumables",
+            "columnName": "consumables",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cost_in_credits",
+            "columnName": "cost_in_credits",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "created",
+            "columnName": "created",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "crew",
+            "columnName": "crew",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "edited",
+            "columnName": "edited",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "length",
+            "columnName": "length",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "manufacturer",
+            "columnName": "manufacturer",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "max_atmosphering_speed",
+            "columnName": "max_atmosphering_speed",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "model",
+            "columnName": "model",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "passengers",
+            "columnName": "passengers",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pilots",
+            "columnName": "pilots",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "films",
+            "columnName": "films",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vehicle_class",
+            "columnName": "vehicle_class",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "name"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"22ecd2d64c146111aa917d1bdd8eb43f\")"
+    ]
+  }
+}

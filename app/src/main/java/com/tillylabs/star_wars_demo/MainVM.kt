@@ -1,14 +1,16 @@
 package com.tillylabs.star_wars_demo
 
-import android.content.Context
 import android.widget.SearchView
 import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ObservableField
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import com.tillylabs.star_wars_demo.models.Person
+import com.tillylabs.star_wars_demo.people.PeopleDatabase
+import com.tillylabs.star_wars_demo.people.PeopleRepo
+import com.tillylabs.star_wars_demo.people.Person
+import com.tillylabs.star_wars_demo.vehicles.VehicleDatabase
+import com.tillylabs.star_wars_demo.vehicles.VehicleRepo
 
 class MainVM: ViewModel(), SearchView.OnQueryTextListener {
 
@@ -17,7 +19,9 @@ class MainVM: ViewModel(), SearchView.OnQueryTextListener {
 
 
     fun init(activity: AppCompatActivity, listener: NameAdapter.ItemClickListener){
-        val repo = Repo(PeopleDatabase.getInstance(activity.applicationContext))
+        val repo = PeopleRepo(
+            PeopleDatabase.getInstance(activity.applicationContext)
+        )
         repo.getPeopleData().observe(activity, Observer{ list ->
             if(list != null){
                 fullNameSet.addAll(list)
@@ -27,6 +31,8 @@ class MainVM: ViewModel(), SearchView.OnQueryTextListener {
                 uiAdapter.set(adapter)
             }
         })
+        //we only want to update the DB, not observe it yet
+        VehicleRepo(VehicleDatabase.getInstance(activity.applicationContext)).getVehicleListData()
     }
 
     fun queryListener(): SearchView.OnQueryTextListener{
