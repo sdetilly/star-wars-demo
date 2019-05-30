@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import com.tillylabs.star_wars_demo.R
+import com.tillylabs.star_wars_demo.starship.Starship
 import com.tillylabs.star_wars_demo.vehicles.Vehicle
 
 class PersonDetailsVM(val app: Application): AndroidViewModel(app) {
@@ -12,6 +13,9 @@ class PersonDetailsVM(val app: Application): AndroidViewModel(app) {
 
     val vehicle = ObservableField<String>()
     val vehicleList = ObservableField<List<Vehicle>>()
+
+    val starship = ObservableField<String>()
+    val starshipList = ObservableField<List<Starship>>()
 
     fun init(person: Person){
         this.person = person

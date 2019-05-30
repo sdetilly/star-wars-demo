@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.core.view.setPadding
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.tillylabs.star_wars_demo.starship.Starship
+import com.tillylabs.star_wars_demo.starship.StarshipDetailsActivity
 import com.tillylabs.star_wars_demo.vehicles.Vehicle
 import com.tillylabs.star_wars_demo.vehicles.VehicleDetailsActivity
 
@@ -24,8 +26,8 @@ fun queryTextListener(sv: SearchView, listener: SearchView.OnQueryTextListener?)
     }
 }
 
-@BindingAdapter("addField")
-fun addFieldToLinearLayout(ll: LinearLayout, list: List<Vehicle>?){
+@BindingAdapter("addVehicle")
+fun addVehicleToLinearLayout(ll: LinearLayout, list: List<Vehicle>?){
     if(list != null){
         ll.removeAllViews()
         val ctx = ll.context
@@ -37,6 +39,26 @@ fun addFieldToLinearLayout(ll: LinearLayout, list: List<Vehicle>?){
             tv.setOnClickListener {
                 val intent = Intent(ctx, VehicleDetailsActivity::class.java)
                 intent.putExtra("vehicle_url", vehicle.url)
+                ctx.startActivity(intent)
+            }
+            ll.addView(tv)
+        }
+    }
+}
+
+@BindingAdapter("addStarship")
+fun addStarshipToLinearLayout(ll: LinearLayout, list: List<Starship>?){
+    if(list != null){
+        ll.removeAllViews()
+        val ctx = ll.context
+        for (starship in list) {
+            val tv = TextView(ctx)
+            tv.text = starship.name
+            tv.setPadding(12)
+            tv.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            tv.setOnClickListener {
+                val intent = Intent(ctx, StarshipDetailsActivity::class.java)
+                intent.putExtra("starship_url", starship.url)
                 ctx.startActivity(intent)
             }
             ll.addView(tv)

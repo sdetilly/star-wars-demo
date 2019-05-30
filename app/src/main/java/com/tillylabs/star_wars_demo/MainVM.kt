@@ -9,6 +9,9 @@ import androidx.lifecycle.ViewModel
 import com.tillylabs.star_wars_demo.people.PeopleDatabase
 import com.tillylabs.star_wars_demo.people.PeopleRepo
 import com.tillylabs.star_wars_demo.people.Person
+import com.tillylabs.star_wars_demo.starship.Starship
+import com.tillylabs.star_wars_demo.starship.StarshipDatabase
+import com.tillylabs.star_wars_demo.starship.StarshipRepo
 import com.tillylabs.star_wars_demo.vehicles.VehicleDatabase
 import com.tillylabs.star_wars_demo.vehicles.VehicleRepo
 
@@ -33,6 +36,7 @@ class MainVM: ViewModel(), SearchView.OnQueryTextListener {
         })
         //we only want to update the DB, not observe it yet
         VehicleRepo(VehicleDatabase.getInstance(activity.applicationContext)).getVehicleListData()
+        StarshipRepo(StarshipDatabase.getInstance(activity.applicationContext)).getStarshipListData()
     }
 
     fun queryListener(): SearchView.OnQueryTextListener{

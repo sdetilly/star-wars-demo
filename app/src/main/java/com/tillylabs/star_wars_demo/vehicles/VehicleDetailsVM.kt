@@ -8,8 +8,8 @@ class VehicleDetailsVM(val app: Application): AndroidViewModel(app) {
 
     lateinit var vehicle: Vehicle
 
-    fun init(person: Vehicle){
-        this.vehicle = person
+    fun init(vehicle: Vehicle){
+        this.vehicle = vehicle
     }
 
     fun getName(): String {

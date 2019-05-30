@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="vm" type="com.tillylabs.star_wars_demo.people.PersonDetailsVM"/>
+        <variable name="vm" type="com.tillylabs.star_wars_demo.starship.StarshipDetailsVM"/>
     </data>
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:padding="16dp"
         tools:context=".people.PersonDetailsActivity">
-
+        
         <androidx.constraintlayout.widget.ConstraintLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:context=".people.PersonDetailsActivity">
-
+            
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
@@ -31,115 +31,77 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:transitionName="@string/trans_name"/>
-
+            
             <TextView
-                android:id="@+id/tv_gender"
+                android:id="@+id/tv_cargo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@{vm.gender}"
+                android:text="@{vm.cargoCapacity}"
                 tools:text="gender: Unknown"
                 app:layout_constraintTop_toBottomOf="@id/tv_name"
                 app:layout_constraintStart_toStartOf="parent"/>
-
+            
             <TextView
-                android:id="@+id/tv_height"
+                android:id="@+id/tv_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@{vm.height}"
+                android:text="@{vm.cost}"
                 tools:text="Height: 77"
-                app:layout_constraintTop_toBottomOf="@id/tv_gender"
+                app:layout_constraintTop_toBottomOf="@id/tv_cargo"
                 app:layout_constraintStart_toStartOf="parent"/>
-
+            
             <TextView
-                android:id="@+id/tv_birth"
+                android:id="@+id/tv_crew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@{vm.birthYear}"
+                android:text="@{vm.crew}"
                 tools:text="Height: 77"
-                app:layout_constraintTop_toBottomOf="@id/tv_height"
+                app:layout_constraintTop_toBottomOf="@id/tv_cost"
                 app:layout_constraintStart_toStartOf="parent"/>
-
+            
             <TextView
-                android:id="@+id/tv_hair"
+                android:id="@+id/tv_length"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@{vm.hairColor}"
+                android:text="@{vm.length}"
                 tools:text="Height: 77"
-                app:layout_constraintTop_toBottomOf="@id/tv_birth"
+                app:layout_constraintTop_toBottomOf="@id/tv_crew"
                 app:layout_constraintStart_toStartOf="parent"/>
-
+            
             <TextView
-                android:id="@+id/tv_mass"
+                android:id="@+id/tv_manufacturer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@{vm.mass}"
+                android:text="@{vm.manufacturer}"
                 tools:text="Height: 77"
-                app:layout_constraintTop_toBottomOf="@id/tv_hair"
+                app:layout_constraintTop_toBottomOf="@id/tv_length"
                 app:layout_constraintStart_toStartOf="parent"/>
-
+            
             <TextView
-                android:id="@+id/tv_skin"
+                android:id="@+id/tv_model"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@{vm.skinColor}"
+                android:text="@{vm.model}"
                 tools:text="Height: 77"
-                app:layout_constraintTop_toBottomOf="@id/tv_mass"
+                app:layout_constraintTop_toBottomOf="@id/tv_manufacturer"
                 app:layout_constraintStart_toStartOf="parent"/>
-
+            
             <TextView
-                android:id="@+id/tv_eye"
+                android:id="@+id/tv_class"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@{vm.eyeColor}"
+                android:text="@{vm.starshipClass}"
                 tools:text="Height: 77"
-                app:layout_constraintTop_toBottomOf="@id/tv_skin"
+                app:layout_constraintTop_toBottomOf="@id/tv_model"
                 app:layout_constraintStart_toStartOf="parent"/>
-
-            <TextView
-                android:id="@+id/tv_vehicle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="@{vm.vehicle}"
-                tools:text="Height: 77"
-                app:layout_constraintTop_toBottomOf="@id/tv_eye"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <LinearLayout
-                android:id="@+id/ll_vehicles"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                addVehicle="@{vm.vehicleList}"
-                app:layout_constraintTop_toBottomOf="@id/tv_vehicle"
-                app:layout_constraintStart_toStartOf="parent"/>
-    
-            <TextView
-                android:id="@+id/tv_starship"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="@{vm.starship}"
-                tools:text="Height: 77"
-                app:layout_constraintTop_toBottomOf="@id/ll_vehicles"
-                app:layout_constraintStart_toStartOf="parent"/>
-    
-            <LinearLayout
-                android:id="@+id/ll_starships"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                addStarship="@{vm.starshipList}"
-                app:layout_constraintTop_toBottomOf="@id/tv_starship"
-                app:layout_constraintStart_toStartOf="parent"/>
-
+        
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

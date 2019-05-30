@@ -10,6 +10,9 @@
     <string name="person_eye">Eye color: %1$s</string>
     <string name="person_vehicle">Vehicle:</string>
     <string name="person_no_vehicle">No vehicles</string>
+    
+    <string name="person_starship">Starship:</string>
+    <string name="person_no_starship">No starships</string>
 
 
 
@@ -26,6 +29,8 @@
 
     <string name="trans_name">Person name</string>
     <string name="trans_vehicle_name">Vehicle name</string>
+    <string name="trans_starship_name">Starship name</string>
+
 
 
 </resources>

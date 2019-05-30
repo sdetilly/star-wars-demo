@@ -19,5 +19,5 @@ interface VehicleDao {
     fun getVehicle(url: String): Vehicle
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertOrUpdate(people: List<Vehicle>)
+    fun insertOrUpdate(vehicle: List<Vehicle>)
 }

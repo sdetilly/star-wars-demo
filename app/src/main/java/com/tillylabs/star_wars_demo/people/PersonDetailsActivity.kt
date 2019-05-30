@@ -7,6 +7,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.tillylabs.star_wars_demo.R
 import com.tillylabs.star_wars_demo.databinding.ActivityPersonDetailsBinding
+import com.tillylabs.star_wars_demo.starship.Starship
+import com.tillylabs.star_wars_demo.starship.StarshipDatabase
+import com.tillylabs.star_wars_demo.starship.StarshipRepo
 import com.tillylabs.star_wars_demo.vehicles.Vehicle
 import com.tillylabs.star_wars_demo.vehicles.VehicleDatabase
 import com.tillylabs.star_wars_demo.vehicles.VehicleRepo
@@ -35,6 +38,7 @@ class PersonDetailsActivity : AppCompatActivity() {
                     }
                     binding.vm = vm
                     observeVehicle(person.vehicles)
+                    observeStarships(person.starships)
                 }
             })
         }
@@ -52,6 +56,21 @@ class PersonDetailsActivity : AppCompatActivity() {
             }
         }else{
             vm.vehicle.set(getString(R.string.person_no_vehicle))
+        }
+    }
+
+    fun observeStarships(list: List<String>){
+        if(list.isNotEmpty()) {
+            CoroutineScope(Dispatchers.Main).launch{
+                vm.starship.set(getString(R.string.person_starship))
+                val starshipList = mutableListOf<Starship>()
+                for (url in list) {
+                    starshipList.add(StarshipRepo(StarshipDatabase.getInstance(this@PersonDetailsActivity)).getSpecificStarship(url))
+                }
+                vm.starshipList.set(starshipList)
+            }
+        }else{
+            vm.starship.set(getString(R.string.person_no_starship))
         }
     }
 }

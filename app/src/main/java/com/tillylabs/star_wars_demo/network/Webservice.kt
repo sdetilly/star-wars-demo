@@ -1,6 +1,7 @@
 package com.tillylabs.star_wars_demo.network
 
 import com.tillylabs.star_wars_demo.people.Person
+import com.tillylabs.star_wars_demo.starship.Starship
 import com.tillylabs.star_wars_demo.vehicles.Vehicle
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -54,6 +55,21 @@ object Webservice {
         while(!response.body()?.next.isNullOrEmpty()){
             i++
             response = api.fetchVehicleList(i).execute()
+            val tempList = response.body()?.results ?: throw IOException(response.errorBody()?.string() ?: "")
+            list.addAll(tempList)
+        }
+        return list
+    }
+
+    @JvmStatic
+    @Throws(IOException::class)
+    fun getStarshipList(): List<Starship>{
+        var i = 1
+        var response = api.fetchStarshipList(i).execute()
+        val list = response.body()?.results ?: throw IOException(response.errorBody()?.string() ?: "")
+        while(!response.body()?.next.isNullOrEmpty()){
+            i++
+            response = api.fetchStarshipList(i).execute()
             val tempList = response.body()?.results ?: throw IOException(response.errorBody()?.string() ?: "")
             list.addAll(tempList)
         }
