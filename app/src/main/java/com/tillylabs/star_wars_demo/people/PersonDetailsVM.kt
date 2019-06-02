@@ -9,7 +9,7 @@ import com.tillylabs.star_wars_demo.vehicles.Vehicle
 
 class PersonDetailsVM(val app: Application): AndroidViewModel(app) {
 
-    lateinit var person: Person
+    private lateinit var person: Person
 
     val vehicle = ObservableField<String>()
     val vehicleList = ObservableField<List<Vehicle>>()

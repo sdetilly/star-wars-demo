@@ -3,7 +3,7 @@ package com.tillylabs.star_wars_demo.people
 import android.view.View
 import com.tillylabs.star_wars_demo.NameAdapter
 
-class RowPersonVM(val person: Person, val listener: NameAdapter.ItemClickListener? = null) {
+class RowPersonVM(private val person: Person, private val listener: NameAdapter.ItemClickListener? = null) {
 
     fun getName(): String{
         return person.name

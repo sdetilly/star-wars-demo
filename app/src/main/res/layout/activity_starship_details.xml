@@ -30,7 +30,7 @@
                 tools:text="Name: Luke Skywalker"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:transitionName="@string/trans_name"/>
+                android:transitionName="@string/trans_starship_name"/>
             
             <TextView
                 android:id="@+id/tv_cargo"

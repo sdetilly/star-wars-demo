@@ -16,13 +16,15 @@ object Webservice {
     var api: Endpoints
 
     init {
-        val client = OkHttpClient.Builder()
-        val logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BODY
-        client.addInterceptor(logging)
-        client.connectTimeout(30, TimeUnit.SECONDS)
-        client.readTimeout(30, TimeUnit.SECONDS)
-        client.writeTimeout(30, TimeUnit.SECONDS)
+        val logging = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+        val client = OkHttpClient.Builder().apply {
+            addInterceptor(logging)
+            connectTimeout(30, TimeUnit.SECONDS)
+            readTimeout(30, TimeUnit.SECONDS)
+            writeTimeout(30, TimeUnit.SECONDS)
+        }
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

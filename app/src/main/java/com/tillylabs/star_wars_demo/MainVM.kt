@@ -2,41 +2,30 @@ package com.tillylabs.star_wars_demo
 
 import android.widget.SearchView
 import androidx.annotation.VisibleForTesting
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ObservableField
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import com.tillylabs.star_wars_demo.people.PeopleDatabase
+import androidx.lifecycle.viewModelScope
 import com.tillylabs.star_wars_demo.people.PeopleRepo
 import com.tillylabs.star_wars_demo.people.Person
-import com.tillylabs.star_wars_demo.starship.Starship
-import com.tillylabs.star_wars_demo.starship.StarshipDatabase
-import com.tillylabs.star_wars_demo.starship.StarshipRepo
-import com.tillylabs.star_wars_demo.vehicles.VehicleDatabase
-import com.tillylabs.star_wars_demo.vehicles.VehicleRepo
+import kotlinx.coroutines.launch
 
-class MainVM: ViewModel(), SearchView.OnQueryTextListener {
+class MainVM(val repo: PeopleRepo): ViewModel(), SearchView.OnQueryTextListener {
 
     val uiAdapter = ObservableField(NameAdapter())
     val fullNameSet = mutableSetOf<Person>()
 
+    val people = repo.peopleData
 
-    fun init(activity: AppCompatActivity, listener: NameAdapter.ItemClickListener){
-        val repo = PeopleRepo(
-            PeopleDatabase.getInstance(activity.applicationContext)
-        )
-        repo.getPeopleData().observe(activity, Observer{ list ->
-            if(list != null){
-                fullNameSet.addAll(list)
-                val adapter = uiAdapter.get()
-                adapter?.listener = listener
-                adapter?.submitList(list)
-                uiAdapter.set(adapter)
-            }
-        })
-        //we only want to update the DB, not observe it yet
-        VehicleRepo(VehicleDatabase.getInstance(activity.applicationContext)).getVehicleListData()
-        StarshipRepo(StarshipDatabase.getInstance(activity.applicationContext)).getStarshipListData()
+    fun init(listener: NameAdapter.ItemClickListener){
+        uiAdapter.get()?.listener = listener
+        viewModelScope.launch { repo.fetchPeople() }
+    }
+
+    fun refreshAdapter(list: List<Person>){
+        fullNameSet.addAll(list)
+        val adapter = uiAdapter.get()
+        adapter?.submitList(list)
+        uiAdapter.set(adapter)
     }
 
     fun queryListener(): SearchView.OnQueryTextListener{
@@ -61,5 +50,14 @@ class MainVM: ViewModel(), SearchView.OnQueryTextListener {
     @VisibleForTesting
     fun filterWithString(string: String): List<Person>{
         return fullNameSet.filter { it.name.toLowerCase().contains(string.toLowerCase()) }
+    }
+
+    companion object {
+        /**
+         * Factory for creating [MainVM]
+         *
+         * @param arg the repository to pass to [MainVM]
+         */
+        val FACTORY = singleArgViewModelFactory(::MainVM)
     }
 }

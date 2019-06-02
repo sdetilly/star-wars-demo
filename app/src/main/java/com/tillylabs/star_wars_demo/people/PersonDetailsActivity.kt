@@ -23,15 +23,10 @@ class PersonDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = DataBindingUtil.setContentView<ActivityPersonDetailsBinding>(this,
-            R.layout.activity_person_details
-        )
+        val binding = DataBindingUtil.setContentView<ActivityPersonDetailsBinding>(this, R.layout.activity_person_details)
         if(intent.hasExtra("person_name")){
-            PeopleRepo(
-                PeopleDatabase.getInstance(
-                    this
-                )
-            ).getPersonData(intent.getStringExtra("person_name")).observe(this, Observer { person ->
+            PeopleRepo(PeopleDatabase.getInstance(this))
+                .getPersonData(intent.getStringExtra("person_name")).observe(this, Observer { person ->
                 if(person != null) {
                     vm = ViewModelProviders.of(this)[PersonDetailsVM::class.java].apply {
                         init(person)
