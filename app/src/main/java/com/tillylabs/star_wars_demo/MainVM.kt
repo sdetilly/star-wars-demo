@@ -9,10 +9,10 @@ import com.tillylabs.star_wars_demo.people.PeopleRepo
 import com.tillylabs.star_wars_demo.people.Person
 import kotlinx.coroutines.launch
 
-class MainVM(val repo: PeopleRepo): ViewModel(), SearchView.OnQueryTextListener {
+class MainVM(private val repo: PeopleRepo): ViewModel(), SearchView.OnQueryTextListener {
 
     val uiAdapter = ObservableField(NameAdapter())
-    val fullNameSet = mutableSetOf<Person>()
+    private val fullNameSet = mutableSetOf<Person>()
 
     val people = repo.peopleData
 
@@ -55,7 +55,6 @@ class MainVM(val repo: PeopleRepo): ViewModel(), SearchView.OnQueryTextListener 
     companion object {
         /**
          * Factory for creating [MainVM]
-         *
          * @param arg the repository to pass to [MainVM]
          */
         val FACTORY = singleArgViewModelFactory(::MainVM)

@@ -1,5 +1,6 @@
 package com.tillylabs.star_wars_demo.people
 
+import android.view.View
 import com.tillylabs.star_wars_demo.NameAdapter
 import org.junit.Test
 import org.junit.Assert.*
@@ -25,9 +26,12 @@ class RowPersonVMTest {
 
     @Test
     fun onItemClick() {
-        //TODO: Find a way to test this!
         val listener = mock(NameAdapter.ItemClickListener::class.java)
-        vm = RowPersonVM(Person(name = "Phil"), listener)
-        //verify(listener, Mockito.never()).onItemClicked()
+        val view = mock(View::class.java)
+        val personName = "Phil"
+        vm = RowPersonVM(Person(name = personName), listener)
+        verify(listener, Mockito.never()).onItemClicked(view, personName)
+        vm.onItemClick().onClick(view)
+        verify(listener, Mockito.atLeastOnce()).onItemClicked(view, personName)
     }
 }

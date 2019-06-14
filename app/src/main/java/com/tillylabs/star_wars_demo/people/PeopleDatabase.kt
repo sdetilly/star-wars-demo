@@ -5,12 +5,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.tillylabs.star_wars_demo.StringArrayRoomConverter
+import com.tillylabs.star_wars_demo.roomConverters.PersonConverter
+import com.tillylabs.star_wars_demo.roomConverters.StringArrayRoomConverter
 
 @Database(entities = [Person::class], version = 1)
-@TypeConverters(StringArrayRoomConverter::class)
+@TypeConverters(PersonConverter::class)
 abstract class PeopleDatabase : RoomDatabase(){
-    abstract fun peopleDao(): PeopleDao
+    abstract fun peopleDao(): PeopleDao<Person>
 
     companion object {
         var mInstance: PeopleDatabase? = null

@@ -7,7 +7,7 @@ import com.tillylabs.star_wars_demo.R
 import com.tillylabs.star_wars_demo.starship.Starship
 import com.tillylabs.star_wars_demo.vehicles.Vehicle
 
-class PersonDetailsVM(val app: Application): AndroidViewModel(app) {
+class PersonDetailsVM(private val app: Application): AndroidViewModel(app) {
 
     private lateinit var person: Person
 

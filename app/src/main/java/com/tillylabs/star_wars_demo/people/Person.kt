@@ -19,7 +19,11 @@ data class Person(val birth_year: String = "",
                   val species: ArrayList<String> = ArrayList(),
                   val starships: ArrayList<String> = ArrayList(),
                   val url: String = "",
-                  val vehicles: ArrayList<String> = ArrayList())
+                  val vehicles: ArrayList<String> = ArrayList()){
+    override fun toString(): String {
+        return super.toString()
+    }
+}
 /*
 {
     "birth_year": "19 BBY",

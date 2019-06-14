@@ -1,4 +1,4 @@
-package com.tillylabs.star_wars_demo
+package com.tillylabs.star_wars_demo.roomConverters
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

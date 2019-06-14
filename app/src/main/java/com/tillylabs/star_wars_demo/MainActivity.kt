@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), NameAdapter.ItemClickListener {
         val intent = Intent(this, PersonDetailsActivity::class.java)
         intent.putExtra("person_name", personName)
         // Check if we're running on Android 5.0 or higher
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (buildSdkAfter21()) {
             // Apply activity transition
             val options = ActivityOptions
                 .makeSceneTransitionAnimation(this, view, getString(R.string.trans_name))

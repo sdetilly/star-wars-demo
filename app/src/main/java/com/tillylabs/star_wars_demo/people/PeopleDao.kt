@@ -7,14 +7,14 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
-interface PeopleDao {
+interface PeopleDao<T> {
 
     @Query("SELECT * FROM people")
-    fun loadList(): LiveData<List<Person>>
+    fun loadList(): LiveData<List<T>>
 
     @Query("SELECT * FROM people WHERE name = :name")
-    fun getPerson(name: String): LiveData<Person>
+    fun getPerson(name: String): LiveData<T>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertOrUpdate(people: List<Person>)
+    fun insertOrUpdate(people: List<T>)
 }
